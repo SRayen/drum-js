@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #score {
+        font-size: 150px;
+        background-color: rgb(212, 238, 212);
+      }
+    </style>
+  </head>
+
+  <body onkeypress="play()">
+    <center>
+      <audio id="song" src="demo.mp3" controls></audio>
+      <h1>Audio Player</h1>
+      <h2 id="score">0</h2>
+
+      <button onclick="backward()">Backward</button>
+      <button onclick="forward()">Forward</button>
+
+      <br />
+      <br />
+      <button onclick="reset()">Reset</button>
+    </center>
+  </body>
+
+  <!-- ************ -->
+  <script>
+    console.log("Hello World 123");
+    console.log("13245");
+
+    var song = document.getElementById("song");
+    var score = document.getElementById("score");
+
+    function play() {
+      score.innerHTML = parseInt(score.innerHTML) + 1;
+      song.play();
+
+      document.body.style.backgroundColor = colors[position];
+      position = (position + 1) % colors.length;
+    }
+
+    function pause() {
+      song.pause();
+    }
+
+    setInterval(pause, 2000);
+
+    function reset() {
+      score.innerHTML = 0;
+      song.currentTime = 0;
+    }
+
+    function forward() {
+      song.currentTime += 10;
+    }
+
+    function backward() {
+      song.currentTime -= 10;
+    }
+
+    var colors = ["red", "blue", "green", "yellow", "orange", "purple"];
+    var position = 0;
+  </script>
+  <!-- ************ -->
+</html>
